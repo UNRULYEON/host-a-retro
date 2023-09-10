@@ -11,8 +11,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "motion": "^10.16.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-timer-hook": "^3.0.7",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
