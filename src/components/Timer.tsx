@@ -9,7 +9,7 @@ const Timer = () => {
     pause: pauseChime,
   } = useAudio("/headspace-softchime.mp3");
   const [timestampOffset, setTimestampOffset] = useState({
-    offset: 2,
+    offset: 300,
     mutated: new Date(),
   });
   const { seconds, minutes, isRunning, totalSeconds, pause, start, restart } =
