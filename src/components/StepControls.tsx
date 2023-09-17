@@ -1,5 +1,5 @@
+import { ReactNode, useEffect } from "react";
 import { useRetroState } from "@/state";
-import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
@@ -13,18 +13,20 @@ const StepControls = () => {
 
   const handleNextStep = () => increaseStep();
 
-  // const handleKeyDown = (event: KeyboardEvent) => {
-  //   if (event.key === "ArrowLeft" || event.key === "p") {
-  //     handlePreviousStep();
-  //   } else if (event.key === "ArrowRight" || event.key === "n") {
-  //     handleNextStep();
-  //   }
-  // };
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "ArrowLeft" || event.key === "p") {
+      handlePreviousStep();
+    } else if (event.key === "ArrowRight" || event.key === "n") {
+      handleNextStep();
+    }
+  };
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", handleKeyDown);
-  //   return () => window.removeEventListener("keydown", handleKeyDown, false);
-  // }, []);
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown, false);
+  }, []);
+
+  return null;
 
   return (
     <div className="flex select-none flex-row gap-2 text-neutral-500">

@@ -1,8 +1,6 @@
-import StepTitle from "@/components/StepTitle";
 import { useRetroState } from "@/state";
 
 const EnergiserStep = () => {
-  const energiserTitle = useRetroState((state) => state.energiserTitle);
   const energiser = useRetroState((state) => state.energiser);
   const randomiseEnergiser = useRetroState((state) => state.randomiseEnergiser);
 

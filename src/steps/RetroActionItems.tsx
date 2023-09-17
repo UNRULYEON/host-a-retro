@@ -1,5 +1,3 @@
-import StepTitle from "@/components/StepTitle";
-
 const RetroActionItemsStep = () => {
   return (
     <>

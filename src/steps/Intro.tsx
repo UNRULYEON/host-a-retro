@@ -1,4 +1,3 @@
-import StepTitle from "@/components/StepTitle";
 import { useRetroState } from "@/state";
 
 const IntroStep = () => {

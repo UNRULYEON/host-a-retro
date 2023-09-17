@@ -7,8 +7,14 @@ import { Button } from "@/components/ui/button";
 import CommandPalette from "@/components/CommandPalette";
 import getOS from "@/utils/getOS";
 import { Card } from "@/components/ui/card";
-
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 enum STEPS {
   "intro",
@@ -40,39 +46,62 @@ const App = () => {
             </kbd>
           </p>
         </Button>
+        <div className="visible flex w-full sm:invisible sm:hidden">
+          <Select
+            onValueChange={(v) => {
+              Object.values(STEPS).forEach((step, i) => {
+                if (v === step) {
+                  setStep(i);
+                }
+              });
+            }}
+            value={STEPS[step]}
+            defaultValue={STEPS[step]}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Step" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={STEPS[0]}>Intro</SelectItem>
+              <SelectItem value={STEPS[1]}>Action items</SelectItem>
+              <SelectItem value={STEPS[2]}>Energiser</SelectItem>
+              <SelectItem value={STEPS[3]}>Retro theme</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
         <Timer />
       </div>
-      <div className="flex justify-center">
-        <Tabs defaultValue={STEPS[step]}>
-          <TabsList>
-            <TabsTrigger value={STEPS[0]} onClick={() => setStep(0)}>
-              Intro
-            </TabsTrigger>
-            <TabsTrigger value={STEPS[1]} onClick={() => setStep(1)}>
-              Action items
-            </TabsTrigger>
-            <TabsTrigger value={STEPS[2]} onClick={() => setStep(2)}>
-              Energiser
-            </TabsTrigger>
-            <TabsTrigger value={STEPS[3]} onClick={() => setStep(3)}>
-              Retro theme
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
+      <Tabs
+        defaultValue={STEPS[step]}
+        value={STEPS[step]}
+        className="invisible hidden justify-center sm:visible sm:flex"
+      >
+        <TabsList>
+          <TabsTrigger value={STEPS[0]} onClick={() => setStep(0)}>
+            Intro
+          </TabsTrigger>
+          <TabsTrigger value={STEPS[1]} onClick={() => setStep(1)}>
+            Action items
+          </TabsTrigger>
+          <TabsTrigger value={STEPS[2]} onClick={() => setStep(2)}>
+            Energiser
+          </TabsTrigger>
+          <TabsTrigger value={STEPS[3]} onClick={() => setStep(3)}>
+            Retro theme
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
       <Card className="flex h-[inherit] w-[inherit] p-4">{steps[step]}</Card>
       <div className="flex flex-row justify-between">
-        <div className="flex flex-row gap-2 md:gap-4">
-          <ThemeModeToggle />
-          <Button size="icon" variant="ghost" asChild>
-            <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
-              <GitHubLogoIcon />
-            </a>
-          </Button>
-        </div>
-        <StepControls />
+        <Button size="icon" variant="ghost" asChild>
+          <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
+            <GitHubLogoIcon />
+          </a>
+        </Button>
+        <ThemeModeToggle />
       </div>
       <CommandPalette />
+      <StepControls />
     </div>
   );
 };
