@@ -2,11 +2,10 @@ import { useRetroState } from "@/state";
 import Timer from "@/components/Timer";
 import StepControls from "@/components/StepControls";
 import { ThemeModeToggle } from "@/components/ThemeModeToggle";
-import { Progress } from "@/components/ui/progress";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import CommandPalette from "@/components/CommandPalette";
-import getOS from "./utils/getOS";
+import getOS from "@/utils/getOS";
 
 const App = () => {
   const step = useRetroState((state) => state.step);
@@ -14,14 +13,15 @@ const App = () => {
   const toggle = useRetroState((s) => s.toggleOpenCommandPalette);
 
   return (
-    <div className="relative h-[inherit] w-[inherit] text-center">
-      <div className="absolute top-0 w-full">
-        <Progress value={33} className="h-2 rounded-none" />
-      </div>
+    <div className="relative h-[inherit] w-[inherit] overflow-hidden text-center">
+      {/* <div className="absolute top-0 w-full">
+        <Progress value={normalisedTotalSeconds} className="h-2 rounded-none" />
+      </div> */}
       <span className="text-md absolute left-0 right-0 top-6 font-bold">
         For when you need to host a retro in person with minimal effort 😘
       </span>
-      <div className="absolute right-4 top-6 z-10 flex select-none flex-row gap-2 md:gap-4">
+      {/* <div className="absolute right-4 top-6 z-10 flex select-none flex-row gap-2 md:gap-4"> */}
+      <div className="absolute right-4 top-4 z-10 flex select-none flex-row gap-2 md:gap-4">
         <Button
           variant="ghost"
           onClick={() => toggle()}
