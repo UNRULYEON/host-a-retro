@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import useAudio from "@/hooks/useAudio";
 import {
+  TimerIcon,
   PlusIcon,
   MinusIcon,
   ResetIcon,
@@ -9,7 +10,11 @@ import {
   PlayIcon,
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Timer = () => {
   const {
@@ -92,42 +97,46 @@ const Timer = () => {
   }, [timestampOffset, isRunning]);
 
   return (
-    <Card className="group absolute right-4 top-4 z-10 select-none">
-      <CardHeader>
-        <CardTitle>
-          <div className="flex flex-row items-center gap-4">
-            <Button size="icon" onClick={handleIncreaseTimer}>
-              <PlusIcon />
-            </Button>
+    <div className="group absolute right-4 top-4 z-10 select-none">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline">
+            <TimerIcon className="mr-2 h-4 w-4" />
             {minutes}:
             {seconds === 0 ? "00" : seconds < 10 ? `0${seconds}` : seconds}
-            <Button size="icon" onClick={handleDecreaseTimer}>
-              <MinusIcon />
-            </Button>
-          </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-row justify-center gap-2">
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-50 mr-4 grid grid-cols-2 gap-4">
+          <Button variant="ghost" onClick={handleIncreaseTimer}>
+            <PlusIcon className="mr-2 h-4 w-4" />
+            Increase
+          </Button>
+          <Button variant="ghost" onClick={handleDecreaseTimer}>
+            <MinusIcon className="mr-2 h-4 w-4" />
+            Decrease
+          </Button>
           <Button
-            size="icon"
+            variant="secondary"
             onClick={handleOnRestart}
             disabled={totalSeconds === timestampOffset.offset}
           >
-            <ResetIcon />
+            <ResetIcon className="mr-2 h-4 w-4" />
+            Reset
           </Button>
           {isRunning ? (
-            <Button size="icon" onClick={handleOnPause}>
-              <PauseIcon />
+            <Button onClick={handleOnPause}>
+              <PauseIcon className="mr-2 h-4 w-4" />
+              Pause
             </Button>
           ) : (
-            <Button size="icon" onClick={handleOnStart}>
-              <PlayIcon />
+            <Button onClick={handleOnStart}>
+              <PlayIcon className="mr-2 h-4 w-4" />
+              Start
             </Button>
           )}
-        </div>
-      </CardContent>
-    </Card>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 };
 
