@@ -32,7 +32,7 @@ const CommandPalette = () => {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleOnSelect = (f: () => void) => (value: string) => {
+  const handleOnSelect = (f: () => void) => (_value: string) => {
     f();
     toggle();
   };
