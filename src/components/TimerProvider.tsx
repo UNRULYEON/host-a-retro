@@ -44,7 +44,7 @@ const TimerProvider: FC<TimerProviderProps> = ({ context, children }) => {
       expiryTimestamp: new Date(),
     });
   const [timestampOffset, setTimestampOffset] = useState({
-    offset: 5,
+    offset: 300,
     mutated: new Date(),
   });
 
