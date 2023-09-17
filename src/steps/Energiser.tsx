@@ -10,11 +10,6 @@ const EnergiserStep = () => {
 
   return (
     <>
-      <StepTitle>
-        Energiser
-        <br />
-        {energiserTitle}
-      </StepTitle>
       <div className="flex max-w-xl flex-col gap-4 text-left">
         <button onClick={handleOnReroll} className="flex w-min">
           🎲

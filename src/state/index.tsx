@@ -17,9 +17,11 @@ export interface RetroState {
   toggleOpenCommandPalette: () => void;
 
   step: number;
+  setStep: (step: number) => void;
   increaseStep: () => void;
   decreaseStep: () => void;
   steps: ReactNode[];
+
   introTitle: string;
   energiserTitle: string;
   energiser: Energiser;
@@ -45,6 +47,10 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
           })),
 
         step: 0,
+        setStep: (step: number) =>
+          set(() => ({
+            step,
+          })),
         increaseStep: () =>
           set((state) => {
             if (state.step === state.steps.length - 1) return state;

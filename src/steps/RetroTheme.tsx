@@ -11,7 +11,6 @@ const RetroThemeStep = () => {
 
   return (
     <>
-      <StepTitle>Retro theme</StepTitle>
       <div className="flex max-w-xl flex-col gap-4 text-left">
         <button onClick={handleOnReroll} className="flex w-min">
           🎲

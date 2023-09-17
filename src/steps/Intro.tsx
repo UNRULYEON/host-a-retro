@@ -6,7 +6,6 @@ const IntroStep = () => {
 
   return (
     <>
-      <StepTitle>Intro</StepTitle>
       <h1 className="text-5xl font-bold">{introTitle}</h1>
     </>
   );
