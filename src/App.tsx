@@ -1,6 +1,7 @@
 import { useRetroState } from "@/state";
 import Timer from "@/components/Timer";
 import StepControls from "@/components/StepControls";
+import { ModeToggle } from "@/components/ThemeModeToggle";
 
 const App = () => {
   const step = useRetroState((state) => state.step);
@@ -13,10 +14,10 @@ const App = () => {
       </span>
       <Timer />
       <StepControls />
-
       <main className="flex h-[inherit] w-[inherit] flex-col items-center justify-center gap-4">
         {steps[step]}
       </main>
+      {/* <ModeToggle /> */}
     </div>
   );
 };
