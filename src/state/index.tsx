@@ -12,6 +12,10 @@ import energisers, { Energiser } from "@/state/energisers";
 import retroThemes, { RetroTheme } from "@/state/retroThemes";
 
 export interface RetroState {
+  openCommandPalette: boolean;
+  setOpenCommandPalette: (open: boolean) => void;
+  toggleOpenCommandPalette: () => void;
+
   step: number;
   increaseStep: () => void;
   decreaseStep: () => void;
@@ -30,6 +34,16 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
   return createStore<RetroState>()(
     logger(
       (set) => ({
+        openCommandPalette: false,
+        setOpenCommandPalette: (open: boolean) =>
+          set(() => ({
+            openCommandPalette: open,
+          })),
+        toggleOpenCommandPalette: () =>
+          set((state) => ({
+            openCommandPalette: !state.openCommandPalette,
+          })),
+
         step: 0,
         increaseStep: () =>
           set((state) => {

@@ -8,15 +8,11 @@ export const introTitles = [
   "Leave your retro up to the gacha gods",
   <div className="flex flex-col text-left">
     <span>Retrospective</span>
-    <span className="text-lg font-normal dark:text-neutral-400">
-      /ˌrɛtrə(ʊ)ˈspɛktɪv/
-    </span>
+    <span className="text-lg font-normal">/ˌrɛtrə(ʊ)ˈspɛktɪv/</span>
     <span className="mt-4 text-lg font-normal">
       looking back on or dealing with past events or situations
     </span>
-    <span className="text-lg font-normal dark:text-neutral-400">
-      "our survey was retrospective"
-    </span>
+    <span className="text-lg font-normal">"our survey was retrospective"</span>
   </div>,
 ];
 

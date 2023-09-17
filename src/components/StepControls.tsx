@@ -1,5 +1,7 @@
 import { useRetroState } from "@/state";
 import { ReactNode, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 
 const StepControls = () => {
   const step = useRetroState((state) => state.step);
@@ -25,12 +27,12 @@ const StepControls = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-4 right-4 z-10 flex select-none flex-row gap-3 text-neutral-500">
+    <div className="flex select-none flex-row gap-2 text-neutral-500">
       <StepButton onClick={handlePreviousStep} disabled={step === 0}>
-        {"<"}
+        <ChevronLeftIcon />
       </StepButton>
       <StepButton onClick={handleNextStep} disabled={step === steps.length - 1}>
-        {">"}
+        <ChevronRightIcon />
       </StepButton>
     </div>
   );
@@ -43,15 +45,9 @@ type StepButtonProps = {
 };
 
 const StepButton = ({ children, disabled, onClick }: StepButtonProps) => (
-  <button
-    onClick={onClick}
-    className={`aspect-square w-12 rounded-full border-2 border-neutral-300 font-bold text-neutral-300 transition-all ease-in-out ${
-      disabled ? "scale-95 cursor-not-allowed opacity-50" : "hover:scale-105"
-    }`}
-    disabled={disabled}
-  >
+  <Button size="icon" onClick={onClick} disabled={disabled}>
     {children}
-  </button>
+  </Button>
 );
 
 export default StepControls;

@@ -97,7 +97,7 @@ const Timer = () => {
   }, [timestampOffset, isRunning]);
 
   return (
-    <div className="group absolute right-4 top-4 z-10 select-none">
+    <div className="group">
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">
