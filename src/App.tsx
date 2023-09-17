@@ -30,23 +30,14 @@ const App = () => {
   const toggle = useRetroState((s) => s.toggleOpenCommandPalette);
 
   return (
-    <div className="flex h-[inherit] w-[inherit] flex-col gap-2 overflow-hidden p-4 md:gap-4">
-      <div className="flex select-none flex-row justify-end gap-2 md:gap-4">
-        <Button
-          variant="ghost"
-          onClick={() => toggle()}
-          className="invisible hidden sm:visible sm:block"
-        >
-          <p className="text-sm text-muted-foreground">
-            Command palette{" "}
-            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-              <span className="text-xs">
-                {getOS() === "MacOS" ? "⌘" : "Ctrl"} + K
-              </span>
-            </kbd>
-          </p>
-        </Button>
-        <div className="visible flex w-full sm:invisible sm:hidden">
+    <div className="flex h-[inherit] w-[inherit] flex-col gap-4 overflow-hidden p-4">
+      <div
+        className="grid select-none gap-2 md:gap-4"
+        style={{
+          gridTemplateColumns: "1fr 2fr 1fr",
+        }}
+      >
+        <div className="visible col-span-2 flex w-full sm:invisible sm:hidden">
           <Select
             onValueChange={(v) => {
               Object.values(STEPS).forEach((step, i) => {
@@ -69,28 +60,30 @@ const App = () => {
             </SelectContent>
           </Select>
         </div>
-        <Timer />
+        <Tabs
+          defaultValue={STEPS[step]}
+          value={STEPS[step]}
+          className="invisible col-start-2 hidden justify-center sm:visible sm:flex"
+        >
+          <TabsList>
+            <TabsTrigger value={STEPS[0]} onClick={() => setStep(0)}>
+              Intro
+            </TabsTrigger>
+            <TabsTrigger value={STEPS[1]} onClick={() => setStep(1)}>
+              Action items
+            </TabsTrigger>
+            <TabsTrigger value={STEPS[2]} onClick={() => setStep(2)}>
+              Energiser
+            </TabsTrigger>
+            <TabsTrigger value={STEPS[3]} onClick={() => setStep(3)}>
+              Retro theme
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+        <div className="flex flex-row justify-end">
+          <Timer />
+        </div>
       </div>
-      <Tabs
-        defaultValue={STEPS[step]}
-        value={STEPS[step]}
-        className="invisible hidden justify-center sm:visible sm:flex"
-      >
-        <TabsList>
-          <TabsTrigger value={STEPS[0]} onClick={() => setStep(0)}>
-            Intro
-          </TabsTrigger>
-          <TabsTrigger value={STEPS[1]} onClick={() => setStep(1)}>
-            Action items
-          </TabsTrigger>
-          <TabsTrigger value={STEPS[2]} onClick={() => setStep(2)}>
-            Energiser
-          </TabsTrigger>
-          <TabsTrigger value={STEPS[3]} onClick={() => setStep(3)}>
-            Retro theme
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
       <Card className="flex h-[inherit] w-[inherit] p-4">{steps[step]}</Card>
       <div className="flex flex-row justify-between">
         <Button size="icon" variant="ghost" asChild>
@@ -98,7 +91,23 @@ const App = () => {
             <GitHubLogoIcon />
           </a>
         </Button>
-        <ThemeModeToggle />
+        <div className="flex flex-row gap-2">
+          <Button
+            variant="ghost"
+            onClick={() => toggle()}
+            className="invisible hidden sm:visible sm:block"
+          >
+            <p className="text-sm text-muted-foreground">
+              Command palette{" "}
+              <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                <span className="text-xs">
+                  {getOS() === "MacOS" ? "⌘" : "Ctrl"} + K
+                </span>
+              </kbd>
+            </p>
+          </Button>
+          <ThemeModeToggle />
+        </div>
       </div>
       <CommandPalette />
       <StepControls />

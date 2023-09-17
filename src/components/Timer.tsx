@@ -74,12 +74,10 @@ const Timer = () => {
         </PopoverTrigger>
         <PopoverContent className="w-50 mr-4 grid grid-cols-2 gap-4">
           <Button variant="ghost" onClick={handleIncrease}>
-            <PlusIcon className="mr-2 h-4 w-4" />
-            Increase
+            <PlusIcon className="mr-2 h-4 w-4" />1 minute
           </Button>
           <Button variant="ghost" onClick={handleDecrease}>
-            <MinusIcon className="mr-2 h-4 w-4" />
-            Decrease
+            <MinusIcon className="mr-2 h-4 w-4" />1 minute
           </Button>
           <Button
             variant="secondary"
