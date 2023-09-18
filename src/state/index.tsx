@@ -7,7 +7,7 @@ import EnergiserStep from "@/steps/Energiser";
 import RetroActionItemsStep from "@/steps/RetroActionItems";
 import RetroThemeStep from "@/steps/RetroTheme";
 import getRandomItemFromArray from "@/utils/getRandomItemFromArray";
-import { introTitles, energiserTitles } from "@/state/titles";
+import { introGifs } from "@/state/introGifs";
 import energisers, { Energiser } from "../../energisers";
 import retroThemes, { RetroTheme } from "../../retro-themes";
 
@@ -22,8 +22,8 @@ export interface RetroState {
   decreaseStep: () => void;
   steps: ReactNode[];
 
-  introTitle: string;
-  energiserTitle: string;
+  introGif: string;
+  randomiseIntroGif: () => void;
   energiser: Energiser;
   randomiseEnergiser: () => void;
   retroTheme: RetroTheme;
@@ -71,8 +71,19 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
           <EnergiserStep />,
           <RetroThemeStep />,
         ],
-        introTitle: getRandomItemFromArray(introTitles),
-        energiserTitle: getRandomItemFromArray(energiserTitles),
+        introGif: getRandomItemFromArray(introGifs),
+        randomiseIntroGif: () =>
+          set((state) => {
+            const getNewIntroGif = (): string => {
+              const newIntroGif: string = getRandomItemFromArray(introGifs);
+              if (newIntroGif === state.introGif) return getNewIntroGif();
+              return newIntroGif;
+            };
+
+            return {
+              introGif: getNewIntroGif(),
+            };
+          }),
         energiser: getRandomItemFromArray(energisers),
         randomiseEnergiser: () =>
           set((state) => {

@@ -1,12 +1,19 @@
 import { useRetroState } from "@/state";
 
 const IntroStep = () => {
-  const introTitle = useRetroState((state) => state.introTitle);
+  const introGif = useRetroState((state) => state.introGif);
+  const randomiseIntroGif = useRetroState((state) => state.randomiseIntroGif);
+
+  const handleRandomiseIntroGif = () => randomiseIntroGif();
 
   return (
-    <>
-      <h1 className="text-5xl font-bold">{introTitle}</h1>
-    </>
+    <div className="flex h-[inherit] w-[inherit] items-center justify-center">
+      <img
+        className="h-fit w-full cursor-pointer rounded-lg md:w-[70%]"
+        src={introGif}
+        onClick={handleRandomiseIntroGif}
+      />
+    </div>
   );
 };
 
