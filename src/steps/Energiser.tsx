@@ -12,13 +12,7 @@ const EnergiserStep = () => {
         <button onClick={handleOnReroll} className="flex w-min">
           🎲
         </button>
-        <span className="text-5xl font-bold">{energiser.title}</span>
-        {energiser.description && <p>{energiser.description}</p>}
-        <ol className="list-decimal">
-          {energiser.instructions.map((instruction, index) => (
-            <li key={index}>{instruction}</li>
-          ))}
-        </ol>
+        <energiser.default />
       </div>
     </>
   );

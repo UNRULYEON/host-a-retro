@@ -8,8 +8,8 @@ import RetroActionItemsStep from "@/steps/RetroActionItems";
 import RetroThemeStep from "@/steps/RetroTheme";
 import getRandomItemFromArray from "@/utils/getRandomItemFromArray";
 import { introTitles, energiserTitles } from "@/state/titles";
-import energisers, { Energiser } from "@/state/energisers";
-import retroThemes, { RetroTheme } from "@/state/retroThemes";
+import energisers, { Energiser } from "../../energisers";
+import retroThemes, { RetroTheme } from "../../retro-themes";
 
 export interface RetroState {
   openCommandPalette: boolean;
@@ -79,7 +79,7 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
             const getNewEnergiser = (): Energiser => {
               const newEnergiser: Energiser =
                 getRandomItemFromArray(energisers);
-              if (newEnergiser.title === state.energiser.title)
+              if (newEnergiser.id === state.energiser.id)
                 return getNewEnergiser();
               return newEnergiser;
             };

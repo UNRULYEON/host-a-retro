@@ -14,13 +14,7 @@ const RetroThemeStep = () => {
         <button onClick={handleOnReroll} className="flex w-min">
           🎲
         </button>
-        <span className="text-5xl font-bold">{retroTheme.title}</span>
-        {retroTheme.description && <p>{retroTheme.description}</p>}
-        <ol className="list-decimal">
-          {retroTheme.instructions.map((instruction, index) => (
-            <li key={index}>{instruction}</li>
-          ))}
-        </ol>
+        <retroTheme.default />
       </div>
     </>
   );
