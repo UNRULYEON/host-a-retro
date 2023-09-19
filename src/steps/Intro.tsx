@@ -9,7 +9,7 @@ const IntroStep = () => {
   return (
     <div className="flex h-[inherit] w-[inherit] items-center justify-center">
       <img
-        className="h-fit w-full cursor-pointer rounded-lg md:w-[70%]"
+        className="max-h-min w-full cursor-pointer rounded-lg md:w-[70%]"
         src={introGif}
         onClick={handleRandomiseIntroGif}
       />
