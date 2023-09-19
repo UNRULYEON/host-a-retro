@@ -84,7 +84,9 @@ const App = () => {
           <Timer />
         </div>
       </div>
-      <Card className="flex h-[inherit] w-[inherit] p-4">{steps[step]}</Card>
+      <Card className="flex h-[inherit] w-[inherit] overflow-auto p-4">
+        {steps[step]}
+      </Card>
       <div className="flex flex-row justify-between">
         <Button size="icon" variant="ghost" asChild>
           <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
