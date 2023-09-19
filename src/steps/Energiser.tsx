@@ -8,7 +8,7 @@ const EnergiserStep = () => {
 
   return (
     <>
-      <div className="flex max-w-xl flex-col gap-4 text-left">
+      <div className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col md:justify-center">
         <button onClick={handleOnReroll} className="flex w-min">
           🎲
         </button>

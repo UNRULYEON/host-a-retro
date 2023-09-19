@@ -8,10 +8,13 @@ export default defineConfig(async () => {
 
   return {
     optimizeDeps: {
+      exclude: ["@mdx-js/rollup", "@mdx-js/react"],
       include: ["react/jsx-runtime"],
     },
     plugins: [
-      mdx.default({ remarkPlugins: [] }),
+      mdx.default({
+        providerImportSource: "@mdx-js/react",
+      }),
       {
         name: "create-",
       },
