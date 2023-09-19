@@ -1,14 +1,10 @@
-import StepTitle from "@/components/StepTitle";
-
 const RetroActionItemsStep = () => {
   return (
-    <>
-      <StepTitle>Retrospective action items</StepTitle>
-      <h1 className="text-5xl font-bold">
-        Items that call for actions retroactively
+    <div className="flex h-[inherit] w-[inherit] flex-col items-center justify-center text-center">
+      <h1 className="text-2xl font-bold md:text-5xl">
+        Go through your action items
       </h1>
-      <span className="text-xl">You either did 'em or not</span>
-    </>
+    </div>
   );
 };
 

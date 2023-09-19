@@ -1,33 +1,37 @@
-import StepTitle from "@/components/StepTitle";
+import RerollButton from "@/components/RerollButton";
+import { Card } from "@/components/ui/card";
 import { useRetroState } from "@/state";
+import { Badge } from "@/components/ui/badge";
+import { useRef } from "react";
 
 const EnergiserStep = () => {
-  const energiserTitle = useRetroState((state) => state.energiserTitle);
+  const ref = useRef<HTMLDivElement>(null);
   const energiser = useRetroState((state) => state.energiser);
   const randomiseEnergiser = useRetroState((state) => state.randomiseEnergiser);
 
-  const handleOnReroll = () => randomiseEnergiser();
+  const handleOnReroll = () => {
+    if (ref.current) ref.current.scrollTo({ top: 0, behavior: "smooth" });
+    randomiseEnergiser();
+  };
 
   return (
-    <>
-      <StepTitle>
-        Energiser
-        <br />
-        {energiserTitle}
-      </StepTitle>
-      <div className="flex max-w-xl flex-col gap-4 text-left">
-        <button onClick={handleOnReroll} className="flex w-min">
-          🎲
-        </button>
-        <span className="text-5xl font-bold">{energiser.title}</span>
-        {energiser.description && <p>{energiser.description}</p>}
-        <ol className="list-decimal">
-          {energiser.instructions.map((instruction, index) => (
-            <li key={index}>{instruction}</li>
-          ))}
-        </ol>
+    <Card
+      ref={ref}
+      className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col justify-between gap-4 overflow-x-auto rounded-lg p-4"
+    >
+      <div>
+        {energiser.emoji && (
+          <span className="mb-4 flex text-4xl">{energiser.emoji}</span>
+        )}
+        <energiser.default />
       </div>
-    </>
+      <div className="flex flex-row items-center justify-between gap-4">
+        <a href={energiser.source} target="_blank">
+          <Badge variant="secondary">{energiser.source}</Badge>
+        </a>
+        <RerollButton onClick={handleOnReroll} />
+      </div>
+    </Card>
   );
 };
 

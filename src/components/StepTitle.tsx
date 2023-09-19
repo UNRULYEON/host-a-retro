@@ -6,7 +6,7 @@ type StepTitleProps = {
 
 const StepTitle = ({ children }: StepTitleProps) => {
   return (
-    <span className="text-md absolute top-12 font-bold uppercase dark:text-neutral-400">
+    <span className="text-md absolute top-12 font-bold uppercase">
       {children}
     </span>
   );

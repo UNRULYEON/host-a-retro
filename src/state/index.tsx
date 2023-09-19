@@ -7,17 +7,23 @@ import EnergiserStep from "@/steps/Energiser";
 import RetroActionItemsStep from "@/steps/RetroActionItems";
 import RetroThemeStep from "@/steps/RetroTheme";
 import getRandomItemFromArray from "@/utils/getRandomItemFromArray";
-import { introTitles, energiserTitles } from "@/state/titles";
-import energisers, { Energiser } from "@/state/energisers";
-import retroThemes, { RetroTheme } from "@/state/retroThemes";
+import { introGifs } from "@/state/introGifs";
+import energisers, { Energiser } from "../../energisers";
+import retroThemes, { RetroTheme } from "../../retro-themes";
 
 export interface RetroState {
+  openCommandPalette: boolean;
+  setOpenCommandPalette: (open: boolean) => void;
+  toggleOpenCommandPalette: () => void;
+
   step: number;
+  setStep: (step: number) => void;
   increaseStep: () => void;
   decreaseStep: () => void;
   steps: ReactNode[];
-  introTitle: string;
-  energiserTitle: string;
+
+  introGif: string;
+  randomiseIntroGif: () => void;
   energiser: Energiser;
   randomiseEnergiser: () => void;
   retroTheme: RetroTheme;
@@ -30,7 +36,21 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
   return createStore<RetroState>()(
     logger(
       (set) => ({
+        openCommandPalette: false,
+        setOpenCommandPalette: (open: boolean) =>
+          set(() => ({
+            openCommandPalette: open,
+          })),
+        toggleOpenCommandPalette: () =>
+          set((state) => ({
+            openCommandPalette: !state.openCommandPalette,
+          })),
+
         step: 0,
+        setStep: (step: number) =>
+          set(() => ({
+            step,
+          })),
         increaseStep: () =>
           set((state) => {
             if (state.step === state.steps.length - 1) return state;
@@ -51,15 +71,26 @@ const createRetroStore = (initialState?: Partial<RetroState>) => {
           <EnergiserStep />,
           <RetroThemeStep />,
         ],
-        introTitle: getRandomItemFromArray(introTitles),
-        energiserTitle: getRandomItemFromArray(energiserTitles),
+        introGif: getRandomItemFromArray(introGifs),
+        randomiseIntroGif: () =>
+          set((state) => {
+            const getNewIntroGif = (): string => {
+              const newIntroGif: string = getRandomItemFromArray(introGifs);
+              if (newIntroGif === state.introGif) return getNewIntroGif();
+              return newIntroGif;
+            };
+
+            return {
+              introGif: getNewIntroGif(),
+            };
+          }),
         energiser: getRandomItemFromArray(energisers),
         randomiseEnergiser: () =>
           set((state) => {
             const getNewEnergiser = (): Energiser => {
               const newEnergiser: Energiser =
                 getRandomItemFromArray(energisers);
-              if (newEnergiser.title === state.energiser.title)
+              if (newEnergiser.id === state.energiser.id)
                 return getNewEnergiser();
               return newEnergiser;
             };
