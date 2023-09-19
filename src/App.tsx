@@ -87,11 +87,17 @@ const App = () => {
         {steps[step]}
       </div>
       <div className="flex flex-row justify-between">
-        <Button size="icon" variant="ghost" asChild>
-          <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
+        <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
+          <Button variant="ghost">
             <GitHubLogoIcon />
-          </a>
-        </Button>
+            <div className="invisible ml-2 hidden gap-2 text-xs font-bold text-neutral-600 dark:text-neutral-400 sm:visible sm:flex">
+              <span>💜</span>
+              <span>
+                Contribute your own gifs, energisers and retro themes!
+              </span>
+            </div>
+          </Button>
+        </a>
         <div className="flex flex-row gap-2">
           <Button
             variant="ghost"
