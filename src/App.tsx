@@ -6,7 +6,6 @@ import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import CommandPalette from "@/components/CommandPalette";
 import getOS from "@/utils/getOS";
-import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
@@ -84,9 +83,9 @@ const App = () => {
           <Timer />
         </div>
       </div>
-      <Card className="flex h-[inherit] w-[inherit] overflow-auto p-4">
+      <div className="mx-auto flex h-[inherit] w-[inherit] overflow-auto">
         {steps[step]}
-      </Card>
+      </div>
       <div className="flex flex-row justify-between">
         <Button size="icon" variant="ghost" asChild>
           <a href="https://github.com/UNRULYEON/host-a-retro" target="_blank">
