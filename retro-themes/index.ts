@@ -3,6 +3,7 @@ import { MDXContent } from "mdx/types";
 export type ImportedRetroTheme = {
   title: string;
   source: string;
+  emoji: string;
   default: MDXContent;
 };
 

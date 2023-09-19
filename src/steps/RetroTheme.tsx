@@ -22,6 +22,9 @@ const RetroThemeStep = () => {
       className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col justify-between gap-4 overflow-x-auto rounded-lg p-4"
     >
       <div>
+        {retroTheme.emoji && (
+          <span className="mb-4 flex text-4xl">{retroTheme.emoji}</span>
+        )}
         <retroTheme.default />
       </div>
       <div className="flex flex-row items-center justify-between gap-4">
