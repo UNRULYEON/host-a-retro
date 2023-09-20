@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Close } from "@radix-ui/react-dialog";
 import localStorage from "@/utils/localStorage";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const IntroStep = () => {
   const introGif = useRetroState((state) => state.introGif);
@@ -79,11 +80,15 @@ const IntroStep = () => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <img
-        className="h-fit max-h-[80%] max-w-[80%] cursor-pointer rounded-lg md:w-[70%] xl:w-[900px]"
-        src={introGif}
-        onClick={handleRandomiseIntroGif}
-      />
+      <div className="w-full max-w-[700px]">
+        <AspectRatio ratio={16 / 9} className="flex justify-center">
+          <img
+            className="h-full cursor-pointer rounded-lg object-cover"
+            src={introGif}
+            onClick={handleRandomiseIntroGif}
+          />
+        </AspectRatio>
+      </div>
     </div>
   );
 };
