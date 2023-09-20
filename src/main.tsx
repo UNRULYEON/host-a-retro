@@ -11,7 +11,7 @@ import components from "@/components/markdownComponents.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RetroProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="host-a-retro">
+      <ThemeProvider defaultTheme="dark" storageKey="theme">
         <TimerProvider>
           <MDXProvider components={components}>
             <App />
