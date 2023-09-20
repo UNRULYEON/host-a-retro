@@ -80,7 +80,7 @@ const IntroStep = () => {
         </DialogContent>
       </Dialog>
       <img
-        className="max-h-min w-full cursor-pointer rounded-lg md:w-[70%]"
+        className="h-fit max-h-[80%] max-w-[80%] cursor-pointer rounded-lg md:w-[70%] xl:w-[900px]"
         src={introGif}
         onClick={handleRandomiseIntroGif}
       />

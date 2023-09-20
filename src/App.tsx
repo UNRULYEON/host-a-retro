@@ -104,12 +104,10 @@ const App = () => {
             onClick={() => toggle()}
             className="invisible hidden sm:visible sm:block"
           >
-            <p className="flex gap-2 text-sm text-muted-foreground">
+            <p className="flex items-center gap-2 text-xs text-muted-foreground">
               Command palette{" "}
               <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-                <span className="text-xs">
-                  {getOS() === "MacOS" ? "⌘" : "Ctrl"} + K
-                </span>
+                {getOS() === "MacOS" ? "⌘" : "Ctrl"} + K
               </kbd>
             </p>
           </Button>
