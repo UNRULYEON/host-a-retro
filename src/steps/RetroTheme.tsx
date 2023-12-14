@@ -1,6 +1,7 @@
 import RerollButton from "@/components/RerollButton";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useRetroState } from "@/state";
 import { useRef } from "react";
 
@@ -21,12 +22,14 @@ const RetroThemeStep = () => {
       ref={ref}
       className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col justify-between gap-4 overflow-x-auto rounded-lg"
     >
-      <div className="p-4">
-        {retroTheme.emoji && (
-          <span className="mb-4 flex text-4xl">{retroTheme.emoji}</span>
-        )}
-        <retroTheme.default />
-      </div>
+      <ScrollArea className="h-full">
+        <div className="p-4">
+          {retroTheme.emoji && (
+            <span className="mb-4 flex text-4xl">{retroTheme.emoji}</span>
+          )}
+          <retroTheme.default />
+        </div>
+      </ScrollArea>
       <div className="sticky bottom-0 flex flex-row items-center justify-between border-t bg-background p-2">
         <a href={retroTheme.source} target="_blank">
           <Badge variant="secondary">{retroTheme.source}</Badge>

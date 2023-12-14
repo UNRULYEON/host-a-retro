@@ -1,7 +1,8 @@
 import RerollButton from "@/components/RerollButton";
-import { Card } from "@/components/ui/card";
-import { useRetroState } from "@/state";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRetroState } from "@/state";
 import { useRef } from "react";
 
 const EnergiserStep = () => {
@@ -17,15 +18,17 @@ const EnergiserStep = () => {
   return (
     <Card
       ref={ref}
-      className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col justify-between gap-4 overflow-x-auto rounded-lg p-4"
+      className="m-auto flex h-[inherit] w-[inherit] max-w-2xl flex-col justify-between gap-4 overflow-x-auto rounded-lg"
     >
-      <div>
-        {energiser.emoji && (
-          <span className="mb-4 flex text-4xl">{energiser.emoji}</span>
-        )}
-        <energiser.default />
-      </div>
-      <div className="flex flex-row items-center justify-between gap-4">
+      <ScrollArea className="h-full">
+        <div className="p-4">
+          {energiser.emoji && (
+            <span className="mb-4 flex text-4xl">{energiser.emoji}</span>
+          )}
+          <energiser.default />
+        </div>
+      </ScrollArea>
+      <div className="sticky bottom-0 flex flex-row items-center justify-between border-t bg-background p-2">
         <a href={energiser.source} target="_blank">
           <Badge variant="secondary">{energiser.source}</Badge>
         </a>
