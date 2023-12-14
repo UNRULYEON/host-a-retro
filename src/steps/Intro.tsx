@@ -25,13 +25,10 @@ const IntroStep = () => {
   const handleRandomiseIntroGif = () => randomiseIntroGif();
 
   const handleOnCloseExplanationDialog = (value: boolean) => {
-    console.log(value);
-    console.log(openExplanationDialogOnMount);
     if (
       !value &&
       (openExplanationDialogOnMount === null || openExplanationDialogOnMount)
     ) {
-      console.log("update local storage");
       localStorage.set("explanation-dialog-seen", true);
     }
   };
